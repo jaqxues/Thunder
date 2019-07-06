@@ -12,4 +12,5 @@
     <string name="allergies_title">Allergies</string>
     <string name="scan_qr_code">Scan QR Code</string>
     <string name="qr_content_desc">QR Code</string>
+    <string name="finance_title">Finance</string>
 </resources>

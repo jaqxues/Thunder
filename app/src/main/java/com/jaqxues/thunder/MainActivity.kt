@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import com.google.android.material.navigation.NavigationView
 import com.jaqxues.thunder.fragments.QRCodeFragment
+import com.jaqxues.thunder.fragments.TransactionFragment
 import com.jaqxues.thunder.fragments.UserInformationFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -93,6 +94,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.content_main, QRCodeFragment())
+            .addToBackStack(UserInformationFragment.TAG)
+            .commit()
+    }
+
+    override fun openTransactions() {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.content_main, TransactionFragment())
             .addToBackStack(UserInformationFragment.TAG)
             .commit()
     }

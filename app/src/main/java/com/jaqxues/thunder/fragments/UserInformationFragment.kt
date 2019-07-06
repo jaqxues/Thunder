@@ -63,6 +63,10 @@ class UserInformationFragment : Fragment() {
             listener?.openMedicineQRs()
         }
 
+        finance_card.setOnClickListener {
+            listener?.openTransactions()
+        }
+
         viewModel.refreshItems()
     }
 
@@ -83,6 +87,8 @@ class UserInformationFragment : Fragment() {
 
     interface OnFragmentInteractionListener {
         fun openMedicineQRs()
+
+        fun openTransactions()
     }
 
     companion object {

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jaqxues.thunder.R
 import com.jaqxues.thunder.uicomponents.MedItemContent
-import com.jaqxues.thunder.uicomponents.MyQRCodeItemRecyclerViewAdapter
+import com.jaqxues.thunder.uicomponents.QRCodeItemRecyclerViewAdapter
 
 class QRCodeFragment : Fragment() {
 
@@ -23,7 +23,7 @@ class QRCodeFragment : Fragment() {
         if (view is RecyclerView) {
             with(view) {
                 layoutManager = LinearLayoutManager(context)
-                adapter = MyQRCodeItemRecyclerViewAdapter(MedItemContent.ITEMS)
+                adapter = QRCodeItemRecyclerViewAdapter(MedItemContent.ITEMS)
             }
         }
         return view

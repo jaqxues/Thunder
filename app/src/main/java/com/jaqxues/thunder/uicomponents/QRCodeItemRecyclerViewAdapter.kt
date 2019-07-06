@@ -18,9 +18,9 @@ import kotlinx.android.synthetic.main.fragment_qrcode_item.view.*
  * specified [OnListFragmentInteractionListener].
  * TODO: Replace the implementation with code for your data type.
  */
-class MyQRCodeItemRecyclerViewAdapter(
+class QRCodeItemRecyclerViewAdapter(
     private val mValues: List<MedItem>
-) : RecyclerView.Adapter<MyQRCodeItemRecyclerViewAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<QRCodeItemRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
