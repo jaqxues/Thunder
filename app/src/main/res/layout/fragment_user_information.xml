@@ -130,7 +130,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/InfoCardDetails"
-                    android:text="Some very important data about bla"
+                    android:text="Funds &amp; History"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/finance_title" />
             </androidx.constraintlayout.widget.ConstraintLayout>
