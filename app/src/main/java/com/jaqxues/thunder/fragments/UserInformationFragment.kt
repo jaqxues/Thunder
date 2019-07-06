@@ -67,6 +67,10 @@ class UserInformationFragment : Fragment() {
             listener?.openTransactions()
         }
 
+        health_check_card.setOnClickListener {
+            listener?.openHealthCheck()
+        }
+
         viewModel.refreshItems()
     }
 
@@ -89,6 +93,8 @@ class UserInformationFragment : Fragment() {
         fun openMedicineQRs()
 
         fun openTransactions()
+
+        fun openHealthCheck()
     }
 
     companion object {

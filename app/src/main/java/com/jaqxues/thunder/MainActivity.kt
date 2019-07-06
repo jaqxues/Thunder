@@ -14,10 +14,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
-    UserInformationFragment.OnFragmentInteractionListener {
+    UserInformationFragment.OnFragmentInteractionListener, HealthCheckFragment.OnFragmentInteractionListener {
 
     private val userInfoFragment = UserInformationFragment()
-    private val qrCodeFragment = QRCodeFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -102,6 +101,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.content_main, TransactionFragment())
+            .addToBackStack(UserInformationFragment.TAG)
+            .commit()
+    }
+
+    override fun openHealthCheck() {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.content_main, HealthCheckFragment())
             .addToBackStack(UserInformationFragment.TAG)
             .commit()
     }
