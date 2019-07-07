@@ -1,7 +1,5 @@
 package com.jaqxues.thunder
 
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -10,18 +8,17 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import com.google.android.material.navigation.NavigationView
-import com.google.android.material.snackbar.Snackbar
-import com.jaqxues.thunder.fragments.HealthCheckFragment
-import com.jaqxues.thunder.fragments.QRCodeFragment
-import com.jaqxues.thunder.fragments.TransactionFragment
-import com.jaqxues.thunder.fragments.UserInformationFragment
+import com.jaqxues.thunder.fragments.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.content_main.*
-import kotlinx.android.synthetic.main.fragment_user_information.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
-    UserInformationFragment.OnFragmentInteractionListener, HealthCheckFragment.OnFragmentInteractionListener {
+    UserInformationFragment.OnFragmentInteractionListener, HealthCheckFragment.OnFragmentInteractionListener,
+    CoroutineScope by MainScope() {
 
     private val userInfoFragment = UserInformationFragment()
 
@@ -63,32 +60,51 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        when (item.itemId) {
-            R.id.action_settings -> return true
-            else -> return super.onOptionsItemSelected(item)
+        return when (item.itemId) {
+            R.id.action_settings -> true
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.nav_camera -> {
-                // Handle the camera action
+            R.id.nav_personal -> {
+                supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.content_main, userInfoFragment)
+                    .commit()
             }
-            R.id.nav_gallery -> {
+            R.id.nav_calendar -> {
+                supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.content_main, CalendarFragment())
+                    .commit()
+            }
+            R.id.nav_sos -> {
 
             }
-            R.id.nav_slideshow -> {
+            R.id.nav_fin -> {
+                supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.content_main, TransactionFragment())
+                    .commit()
+            }
+            R.id.nav_settings -> {
 
             }
-            R.id.nav_manage -> {
-
+            R.id.nav_logout -> {
+                launch {
+                    Toast.makeText(this@MainActivity, "Logging out...", Toast.LENGTH_LONG).show()
+                    delay(1500)
+                    finish()
+                }
             }
-            R.id.nav_share -> {
-
-            }
-            R.id.nav_send -> {
-
+            R.id.nav_lab -> {
+                supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.content_main, LabResultsItemFragment())
+                    .commit()
             }
         }
 
@@ -124,6 +140,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         supportFragmentManager
             .popBackStackImmediate()
 
-        userInfoFragment.senTHealthCheck()
+        userInfoFragment.sentHealthCheck()
     }
 }

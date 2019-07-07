@@ -3,6 +3,7 @@ package com.jaqxues.thunder.fragments
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.jaqxues.thunder.api.ApiService
+import com.jaqxues.thunder.packets.LabResults
 import com.jaqxues.thunder.packets.PatientSummary
 import kotlinx.coroutines.*
 import okhttp3.OkHttpClient
@@ -30,6 +31,12 @@ class UserInformationViewModel : ViewModel() {
                 }
             }
         }
+
+        ioScope.launch {
+            apiService.labResults().body()?.let {
+                labResults = it
+            }
+        }
     }
 
 
@@ -40,5 +47,6 @@ class UserInformationViewModel : ViewModel() {
 
     companion object {
         lateinit var patientSummary: PatientSummary
+        lateinit var labResults: List<LabResults>
     }
 }

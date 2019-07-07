@@ -4,7 +4,6 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,15 +13,6 @@ import kotlinx.android.synthetic.main.fragment_health_check.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-/**
- * A simple [Fragment] subclass.
- * Activities that contain this fragment must implement the
- * [HealthCheckFragment.OnFragmentInteractionListener] interface
- * to handle interaction events.
- * Use the [HealthCheckFragment.newInstance] factory method to
- * create an instance of this fragment.
- *
- */
 class HealthCheckFragment : ScopedFragment() {
     private var listener: OnFragmentInteractionListener? = null
 
@@ -53,7 +43,7 @@ class HealthCheckFragment : ScopedFragment() {
         if (context is OnFragmentInteractionListener) {
             listener = context
         } else {
-            throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
+            throw RuntimeException("$context must implement OnFragmentInteractionListener")
         }
     }
 
@@ -74,7 +64,7 @@ class HealthCheckFragment : ScopedFragment() {
                 .setMultiChoiceItems(
                     arrayOf("Edema of the ankle", "Shortness of breath", "Coughing", "Unusually high urine production", "Heavy thirst", "Dizziness"),
                     booleanArrayOf(false, false, false, false, false, false)
-                ) { dialog, which, isChecked ->
+                ) { _, _, _ ->
 
                 }.setCancelable(false)
                 .setPositiveButton(msg) { dialog, _ ->

@@ -11,5 +11,5 @@ interface ApiService {
     suspend fun patientSummary(): Response<PatientSummary>
 
     @GET("/labresults")
-    suspend fun labResults(): Response<LabResults>
+    suspend fun labResults(): Response<List<LabResults>>
 }

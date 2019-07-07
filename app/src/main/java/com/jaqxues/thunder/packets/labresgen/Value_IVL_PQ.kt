@@ -16,6 +16,6 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 
 data class Value_IVL_PQ (
 
-	@SerializedName("high") val high : High,
-	@SerializedName("low") val low : Low
+	@SerializedName("high") val high : High?,
+	@SerializedName("low") val low : Low?
 )

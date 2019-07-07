@@ -1,37 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:tools="http://schemas.android.com/tools"
-      tools:showIn="navigation_view">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
         <item
-                android:id="@+id/nav_camera"
-                android:icon="@drawable/ic_person"
-                android:title="Personal Details" />
+            android:id="@+id/nav_personal"
+            android:icon="@drawable/ic_person"
+            android:title="Personal Details" />
         <item
-                android:id="@+id/nav_gallery"
-                android:icon="@drawable/ic_calendar"
-                android:title="Calendar" />
+            android:id="@+id/nav_calendar"
+            android:icon="@drawable/ic_calendar"
+            android:title="Calendar" />
         <item
-                android:id="@+id/nav_slideshow"
-                android:icon="@android:drawable/stat_sys_phone_call"
-                android:title="SOS" />
+            android:id="@+id/nav_sos"
+            android:icon="@android:drawable/stat_sys_phone_call"
+            android:title="SOS" />
         <item
-                android:id="@+id/nav_manage"
-                android:icon="@drawable/ic_credit_card"
-                android:title="Bills" />
+            android:id="@+id/nav_fin"
+            android:icon="@drawable/ic_credit_card"
+            android:title="Transactions" />
+        <item
+            android:id="@+id/nav_lab"
+            android:icon="@drawable/ic_trans_lab"
+            android:title="Lab Results" />
     </group>
 
     <item android:title="Account">
         <menu>
             <item
-                    android:id="@+id/nav_share"
-                    android:icon="@drawable/ic_settings"
-                    android:title="Settings" />
+                android:id="@+id/nav_settings"
+                android:icon="@drawable/ic_settings"
+                android:title="Settings" />
             <item
-                    android:id="@+id/nav_send"
-                    android:icon="@drawable/ic_logout"
-                    android:title="Logout" />
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_logout"
+                android:title="Logout" />
         </menu>
     </item>
 

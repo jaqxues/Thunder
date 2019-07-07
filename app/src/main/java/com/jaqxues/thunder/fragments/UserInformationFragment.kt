@@ -1,7 +1,7 @@
 package com.jaqxues.thunder.fragments
 
+import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +11,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.snackbar.Snackbar
 import com.jaqxues.thunder.R
-import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.fragment_user_information.*
 
 /**
@@ -91,7 +90,8 @@ class UserInformationFragment : Fragment() {
         listener = null
     }
 
-    fun senTHealthCheck() {
+    @SuppressLint("SetTextI18n")
+    fun sentHealthCheck() {
         health_check.text = "Already sent Health Check today"
 
         health_check_card.setOnClickListener {

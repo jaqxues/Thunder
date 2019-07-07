@@ -17,5 +17,5 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 data class Low (
 
 	@SerializedName("unit") val unit : String,
-	@SerializedName("value") val value : Int
+	@SerializedName("value") val value : Float
 )

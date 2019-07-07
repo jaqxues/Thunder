@@ -17,6 +17,6 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 data class Value_PQ (
 
 	@SerializedName("unit") val unit : String,
-	@SerializedName("value") val value : Int,
+	@SerializedName("value") val value : Float,
 	@SerializedName("{http://www.w3.org/2001/XMLSchema-instance}type") val type : String
 )
