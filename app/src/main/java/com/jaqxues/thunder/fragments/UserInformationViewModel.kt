@@ -1,49 +1,45 @@
 package com.jaqxues.thunder.fragments
 
+import android.app.Activity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.jaqxues.thunder.api.ApiService
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.jaqxues.thunder.packets.LabResults
 import com.jaqxues.thunder.packets.PatientSummary
-import kotlinx.coroutines.*
-import okhttp3.Interceptor
-import okhttp3.OkHttpClient
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import java.io.IOException
+import java.io.InputStream
+
 
 class UserInformationViewModel : ViewModel() {
-    private val viewModelJob = SupervisorJob()
-    private val ioScope = CoroutineScope(Dispatchers.IO + viewModelJob)
-    private val apiService: ApiService = Retrofit.Builder()
-        .addConverterFactory(GsonConverterFactory.create())
-        .baseUrl("https://lts-cns-data.herokuapp.com")
-        .build()
-        .create(ApiService::class.java)
 
     val patientSummary = MutableLiveData<PatientSummary>()
 
-
-    fun refreshItems() {
-        ioScope.launch {
-            apiService.patientSummary().body()?.let {
-                withContext(Dispatchers.Main) {
-                    patientSummary.value = it
-                    Companion.patientSummary = it
-                }
-            }
+    fun inputStreamToString(inputStream: InputStream): String? {
+        return try {
+            val bytes = ByteArray(inputStream.available())
+            inputStream.read(bytes, 0, bytes.size)
+            String(bytes)
+        } catch (e: IOException) {
+            null
         }
 
-        ioScope.launch {
-            apiService.labResults().body()?.let {
-                labResults = it
-            }
-        }
     }
 
+    fun refreshItems(activity: Activity) {
+        val patientSummaryTmp =
+            Gson().fromJson(
+                inputStreamToString(activity.assets.open("patientsummary.json")),
+                PatientSummary::class.java
+            )
+        patientSummary.value = patientSummaryTmp
+        Companion.patientSummary = patientSummaryTmp
 
-    override fun onCleared() {
-        super.onCleared()
-        viewModelJob.cancel()
+        labResults =
+            Gson().fromJson(
+                inputStreamToString(activity.assets.open("labresults.json")),
+                object : TypeToken<List<LabResults>>() {}.type
+            )
     }
 
     companion object {

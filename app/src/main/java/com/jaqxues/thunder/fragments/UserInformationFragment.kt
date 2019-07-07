@@ -73,7 +73,7 @@ class UserInformationFragment : Fragment() {
             listener?.openHealthCheck()
         }
 
-        viewModel.refreshItems()
+        viewModel.refreshItems(requireActivity())
     }
 
     override fun onAttach(context: Context) {
