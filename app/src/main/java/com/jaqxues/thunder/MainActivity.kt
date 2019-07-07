@@ -33,6 +33,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
+        nav_view.menu.findItem(R.id.nav_personal).isChecked = true
+
         nav_view.setNavigationItemSelectedListener(this)
 
         if (savedInstanceState == null) {
