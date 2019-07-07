@@ -1,17 +1,24 @@
 package com.jaqxues.thunder
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
+import com.jaqxues.thunder.fragments.HealthCheckFragment
 import com.jaqxues.thunder.fragments.QRCodeFragment
 import com.jaqxues.thunder.fragments.TransactionFragment
 import com.jaqxues.thunder.fragments.UserInformationFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.android.synthetic.main.fragment_user_information.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
     UserInformationFragment.OnFragmentInteractionListener, HealthCheckFragment.OnFragmentInteractionListener {
@@ -111,5 +118,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             .replace(R.id.content_main, HealthCheckFragment())
             .addToBackStack(UserInformationFragment.TAG)
             .commit()
+    }
+
+    override fun uploadedItem() {
+        supportFragmentManager
+            .popBackStackImmediate()
+
+        userInfoFragment.senTHealthCheck()
     }
 }

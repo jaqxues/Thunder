@@ -4,20 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="16dp"
-    tools:context=".HealthCheckFragment"
+    tools:context=".fragments.HealthCheckFragment"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/weight_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:textSize="20sp"
         android:text="Body Weight" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:layout_marginStart="32dp"
         android:hint="Body Weight (kg)">
 
@@ -32,13 +32,13 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:textSize="20sp"
         android:text="Blood Pressure" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:layout_marginStart="32dp"
         android:hint="Blood Pressure (mmHg/mmHg)">
 
@@ -52,13 +52,13 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:textSize="20sp"
         android:text="Pulse when lying (bpm)" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:layout_marginStart="32dp"
         android:hint="Pulse (bpm)">
 
@@ -70,8 +70,14 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/temp_symps"
+        android:id="@+id/temp_symps_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Transient symptoms" />
+
+    <Button
+        android:id="@+id/send_report_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Upload Report" />
 </LinearLayout>

@@ -1,6 +1,7 @@
 package com.jaqxues.thunder.fragments
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +9,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.google.android.material.snackbar.Snackbar
 import com.jaqxues.thunder.R
+import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.fragment_user_information.*
 
 /**
@@ -86,6 +89,18 @@ class UserInformationFragment : Fragment() {
     override fun onDetach() {
         super.onDetach()
         listener = null
+    }
+
+    fun senTHealthCheck() {
+        health_check.text = "Already sent Health Check today"
+
+        health_check_card.setOnClickListener {
+            val snack = Snackbar.make(requireView(), "Already sent report today. Would you like to open special reports?", Snackbar.LENGTH_LONG)
+            snack.setAction("Open special reports") {
+                HealthCheckFragment.showDialog(requireActivity(), "Upload")
+            }
+            snack.show()
+        }
     }
 
 
