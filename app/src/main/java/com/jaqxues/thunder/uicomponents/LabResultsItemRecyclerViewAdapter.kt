@@ -2,6 +2,8 @@ package com.jaqxues.thunder.uicomponents
 
 
 import android.annotation.SuppressLint
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,11 +26,19 @@ class LabResultsItemRecyclerViewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mValues[position]
         holder.name.text = item.name
-        holder.value.text = item.value
-        holder.min.text = "Min: ${item.min}"
-        holder.max.text = "Max: ${item.max}"
+        holder.value.text = "${item.valuePq.value}${item.valuePq.unit}"
+        holder.min.text = if (item.low != null) "Min: ${item.low.value}${item.low.unit}" else "No Min Value"
+        holder.max.text = if (item.high != null) "Max: ${item.high.value}${item.high.unit}" else "No Max Value"
 
-        if (item.value)
+        var warn = false
+        if (item.low != null && item.valuePq.value < item.low.value)
+            warn = true
+        if (item.high != null && item.valuePq.value > item.high.value)
+            warn = true
+
+        if (warn) {
+            holder.mView.card_item.setCardBackgroundColor(Color.parseColor("#ffb8b8"))
+        }
 
         with(holder.mView) {
             tag = item

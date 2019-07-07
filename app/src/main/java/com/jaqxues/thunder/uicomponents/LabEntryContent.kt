@@ -16,9 +16,9 @@ object LabEntryContent {
             ITEMS.add(
                 Entry(
                     i.code.displayName,
-                    "${i.value_PQ.value}${i.value_PQ.unit}",
-                    if (i.value_IVL_PQ.low != null) "${i.value_IVL_PQ.low.value}${i.value_IVL_PQ.low.unit}" else "No Min Value",
-                    if (i.value_IVL_PQ.high != null) "${i.value_IVL_PQ.high.value}${i.value_IVL_PQ.high.unit}" else "No Max Value",
+                    i.value_PQ,
+                    i.value_IVL_PQ.low,
+                    i.value_IVL_PQ.high,
                     i.effectiveTime.value.formatyyyymmdd()
                 )
             )
@@ -30,7 +30,5 @@ object LabEntryContent {
         return "${string.subSequence(6, 8)}.${string.subSequence(4, 6)}.${string.substring(0, 4)}"
     }
 
-    data class Entry2(val valuePq: Value_PQ, val low: Low, val high: High, val date: String)
-
-    data class Entry(val name: String, val value: String, val min: String, val max: String, val date: String)
+    data class Entry(val name: String, val valuePq: Value_PQ, val low: Low?, val high: High?, val date: String)
 }

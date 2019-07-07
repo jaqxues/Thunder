@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="4dp"
     android:elevation="4dp"
+    android:id="@+id/card_item"
     style="@style/InfoCardStyle">
 
     <androidx.constraintlayout.widget.ConstraintLayout
