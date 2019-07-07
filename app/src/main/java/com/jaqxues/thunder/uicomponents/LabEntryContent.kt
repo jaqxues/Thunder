@@ -1,18 +1,30 @@
 package com.jaqxues.thunder.uicomponents
 
 import com.jaqxues.thunder.fragments.UserInformationViewModel
+import com.jaqxues.thunder.packets.labresgen.Entries
 import com.jaqxues.thunder.packets.labresgen.High
 import com.jaqxues.thunder.packets.labresgen.Low
 import com.jaqxues.thunder.packets.labresgen.Value_PQ
-import java.util.ArrayList
+import java.util.*
 
 object LabEntryContent {
 
     val ITEMS: MutableList<Entry> = ArrayList()
 
+    var currentIndex = 0
+    val hasNext
+        get() = UserInformationViewModel.labResults.size - 1 > currentIndex
+    val hasPrevious
+        get() = currentIndex > 0
+
     init {
         // Add some sample items.
-        for (i in UserInformationViewModel.labResults[0].entries) {
+        fromEntries(UserInformationViewModel.labResults[currentIndex].entries)
+    }
+
+    private fun fromEntries(entries: List<Entries>) {
+        ITEMS.clear()
+        for (i in entries) {
             ITEMS.add(
                 Entry(
                     i.code.displayName,
@@ -23,6 +35,18 @@ object LabEntryContent {
                 )
             )
         }
+    }
+
+    fun previous() {
+        if (!hasPrevious)
+            return
+        fromEntries(UserInformationViewModel.labResults[--currentIndex].entries)
+    }
+
+    fun next() {
+        if (!hasNext)
+            return
+        fromEntries(UserInformationViewModel.labResults[++currentIndex].entries)
     }
 
     private fun Int.formatyyyymmdd(): String {

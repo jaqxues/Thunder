@@ -82,7 +82,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     .commit()
             }
             R.id.nav_sos -> {
-
+                supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.content_main, SosFragment())
+                    .commit()
             }
             R.id.nav_fin -> {
                 supportFragmentManager

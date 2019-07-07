@@ -2,7 +2,6 @@ package com.jaqxues.thunder.uicomponents
 
 
 import android.annotation.SuppressLint
-import android.content.res.ColorStateList
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View

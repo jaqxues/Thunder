@@ -1,31 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:name="com.jaqxues.thunder.fragments.LabResultsItemFragment"
-    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/arrow_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_enabled"
+        android:rotation="180"
+        app:layout_constraintBottom_toBottomOf="@+id/title_lab_results"
+        app:layout_constraintEnd_toStartOf="@+id/title_lab_results"
+        android:background="?selectableItemBackgroundBorderless"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/arrow_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_enabled"
+        app:layout_constraintBottom_toBottomOf="@+id/title_lab_results"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="?selectableItemBackgroundBorderless"
+        app:layout_constraintStart_toEndOf="@+id/title_lab_results" />
 
 
     <TextView
         android:id="@+id/title_lab_results"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="32dp"
-        android:textAlignment="center"
         style="@style/TextAppearance.MaterialComponents.Headline6"
-        android:text="LabResult from 10.2491.2" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="LabResult from some Date"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toStartOf="@+id/arrow_right"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/arrow_left"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         app:layoutManager="LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@+id/title_lab_results"
         tools:context=".fragments.LabResultsItemFragment"
         tools:listitem="@layout/fragment_labresults_item" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
